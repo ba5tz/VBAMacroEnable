@@ -1,0 +1,12 @@
+Option Explicit
+Dim xlApp, xlBook, oFSO
+Set oFSO = CreateObject("Scripting.FileSystemObject")
+sScriptDir = oFSO.GetParentFolderName(WScript.ScriptFullName)
+Set xlApp = CreateObject("Excel.Application")
+Set xlBook = xlApp.Workbooks.Open(sScriptDir & "\MacroTest.xlsm", 0, True)
+xlApp.Run "MacroEnabled"
+xlBook.Close
+xlApp.Quit
+Set xlBook = Nothing
+Set xlApp = Nothing
+WScript.Quit
